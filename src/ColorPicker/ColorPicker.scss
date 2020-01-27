@@ -1,0 +1,189 @@
+$white: #fff;
+$black: #000;
+$grey: #bbb;
+$darkgreen: #00aa00;
+$red: #ff0000;
+$green: #00ff00;
+$blue: #0000ff;
+
+.color-picker {
+  position: relative;
+  .color-picker__handle {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $grey;
+    border-radius: 4px;
+  }
+  .color-picker__hex {
+    padding: 10px;
+    text-transform: uppercase;
+  }
+  .color-picker__button {
+    height: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid $grey;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background-color: $grey;
+      color: $white;
+    }
+  }
+  .color-picker__button-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    &::before {
+      content: '▼';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+    }
+  }
+  .color-picker__dropdown-menu-container {
+    display: none;
+    position: absolute;
+    &--open {
+      display: block;
+    }
+  }
+  .color-picker__dropdown-menu {
+    width: 200px;
+    max-height: 160px;
+    overflow-y: auto;
+    margin-top: 16px;
+    background-color: $white;
+    box-shadow: 10px 10px 16px -10px $black;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $grey;
+    }
+  }
+  .color-picker__dropdown-menu-triangle {
+    height: 16px;
+    position: absolute;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 12px solid $white;
+    }
+  }
+  .color-picker__colors-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .color-picker__colors-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey;
+    }
+    cursor: pointer;
+    &:hover {
+      background-color: $grey;
+      color: $white;
+    }
+  }
+  .color-picker__color-box {
+    width: 18px;
+    height: 18px;
+  }
+  .color-picker__rgb-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .color-picker__rgb-menu-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  .color-picker__rgb-menu-row-title {
+    width: 20px;
+    font-size: 14px;
+  }
+  .color-picker__rgb-menu-slider {
+    appearance: none;
+    height: 8px;
+    margin: 0;
+    flex-grow: 1;
+    background: transparent;
+    direction: rtl;
+    &::-webkit-slider-thumb {
+      appearance: none;
+      height: 12px;
+      width: 12px;
+      margin-top: -4px;
+      border-radius: 50%;
+      background-color: $grey;
+      cursor: pointer;
+    }
+    &::-webkit-slider-runnable-track {
+      height: 4px;
+    }
+    &:active {
+      &::-webkit-slider-thumb {
+        transform: scale(1.2, 1.2);
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    &--red {
+      &::-webkit-slider-runnable-track {
+        background: linear-gradient(90deg, $red, $black);
+      }
+    }
+    &--green {
+      &::-webkit-slider-runnable-track {
+        background: linear-gradient(90deg, $green, $black);
+      }
+    }
+    &--blue {
+      &::-webkit-slider-runnable-track {
+        background: linear-gradient(90deg, $blue, $black);
+      }
+    }
+  }
+  .color-picker__rgb-menu-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+  .color-picker__rgb-menu-button {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 2px;
+    background: $grey;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+    &--primary {
+      background: $darkgreen;
+      color: $white;
+    }
+  }
+}
